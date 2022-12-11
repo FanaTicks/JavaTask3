@@ -66,14 +66,18 @@ public class PropertiesFile {
                         timeProperty = sdf1.parse(property.getProperty(matcherName.group(1))).toInstant();
                     }
                 }else {//по имени обьекта
-                    if (fs[i].getType()== String.class) {
+                    if (fs[i].getType()== String.class && fs[i].getName().equals("stringProperty")) {
                         stringProperty = property.getProperty(fs[i].getName());
-                    } else if (fs[i].getType().equals(numberProperty.getClass()) || fs[i].getType()== int.class) {
+                    } else if (fs[i].getType().equals(numberProperty.getClass()) && fs[i].getName().equals("numberProperty")
+                            || fs[i].getType()== int.class && fs[i].getName().equals("numberProperty")) {
                         numberProperty = Integer.parseInt(property.getProperty(fs[i].getName()));
-                    } else if (fs[i].getType() == Instant.class) {
+                    } else if (fs[i].getType() == Instant.class && fs[i].getName().equals("timeProperty")) {
                         SimpleDateFormat sdf1 = new SimpleDateFormat("dd.MM.yyyy HH:mm");
                         timeProperty = sdf1.parse(property.getProperty(fs[i].getName())).toInstant();
+                    }else if(!fs[i].getName().equals("timeProperty") || fs[i].getName().equals("numberProperty") || fs[i].getName().equals("stringProperty")){
+                        throw new IllegalArgumentException("ОШИБКА: Такого проперти нету!");
                     }
+
                 }
             }
             if(intNull || stringProperty.equals("") || timeProperty==Instant.now()){

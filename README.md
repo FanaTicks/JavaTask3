@@ -39,15 +39,15 @@ Task1
 Файли на 53к рядків
 ![image](https://user-images.githubusercontent.com/75033218/206895063-9844c5ae-087e-49e5-9a88-db97c0ab07ff.png)
 
-*1 потік
+* 1 потік
 ![image](https://user-images.githubusercontent.com/75033218/206895141-51592352-7388-47c5-91dc-8ce91f333487.png)
 
-*2 потік
+* 2 потік
 ![image](https://user-images.githubusercontent.com/75033218/206895118-a49a560d-2173-468b-958f-69a19aae9846.png)
 
-*4 потік
+* 4 потік
 ![image](https://user-images.githubusercontent.com/75033218/206895107-cdb10add-8bfd-42b5-92db-5fbc3625581f.png)
 
-*8 потік
+* 8 потік
 ![image](https://user-images.githubusercontent.com/75033218/206895080-2abe635f-8bfc-407d-820c-527ce281734c.png)
 

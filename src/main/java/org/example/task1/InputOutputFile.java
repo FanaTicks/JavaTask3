@@ -39,6 +39,7 @@ public class InputOutputFile {
         List<CompletableFuture<Map<String, Double>>> list = new ArrayList<CompletableFuture<Map<String, Double>>>();
         Map<String, Double> map = new ConcurrentHashMap<>();
 
+
         for (int i = 1; i < 11; i++) {
             int finalI = i;
             CompletableFuture<Map<String, Double>> future =  CompletableFuture.supplyAsync(() -> {

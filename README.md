@@ -51,9 +51,6 @@ Task1
 * 8 потік
 ![image](https://user-images.githubusercontent.com/75033218/206895080-2abe635f-8bfc-407d-820c-527ce281734c.png)
   
-  Task2
-  Файл конфігів
-  ![image](https://user-images.githubusercontent.com/75033218/206895179-1159cb4b-8126-4b8b-94c3-0971fbba5d0c.png)
 
   
 

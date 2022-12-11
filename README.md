@@ -40,17 +40,15 @@ Task1
 ![image](https://user-images.githubusercontent.com/75033218/206895063-9844c5ae-087e-49e5-9a88-db97c0ab07ff.png)
 
 * 1 потік
-![image](https://user-images.githubusercontent.com/75033218/206895141-51592352-7388-47c5-91dc-8ce91f333487.png)
+![image](https://user-images.githubusercontent.com/75033218/206933013-e5d1afdc-4dd3-4bd8-833c-72853ffa6497.png)
 
 * 2 потік
-![image](https://user-images.githubusercontent.com/75033218/206895118-a49a560d-2173-468b-958f-69a19aae9846.png)
+![image](https://user-images.githubusercontent.com/75033218/206933031-69bc7461-0feb-4d91-952f-9fc44758779b.png)
 
 * 4 потік
-![image](https://user-images.githubusercontent.com/75033218/206895107-cdb10add-8bfd-42b5-92db-5fbc3625581f.png)
+![image](https://user-images.githubusercontent.com/75033218/206933050-165d3ea3-56f3-496c-ae7b-c3be4b376a62.png)
 
 * 8 потік
-![image](https://user-images.githubusercontent.com/75033218/206895080-2abe635f-8bfc-407d-820c-527ce281734c.png)
-  
-
+![image](https://user-images.githubusercontent.com/75033218/206933095-63559c12-f2d9-4448-b528-92d03a88f40a.png)
   
 

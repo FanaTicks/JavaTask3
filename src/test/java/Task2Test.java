@@ -15,6 +15,7 @@ public class Task2Test {
         PropertiesFile.Class cls = new  PropertiesFile.Class<>();
         IllegalArgumentException a = Assertions.assertThrows(IllegalArgumentException.class,()-> {
             loadFromProperties(  cls, testFilePath);
+
         });
         Assertions.assertEquals("ОШИБКА: Проблемы с файлом!",a.getMessage());
     }

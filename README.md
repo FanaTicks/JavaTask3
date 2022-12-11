@@ -49,7 +49,6 @@ Task1
 ![image](https://user-images.githubusercontent.com/75033218/206933050-165d3ea3-56f3-496c-ae7b-c3be4b376a62.png)
 
 * 8 потік
-![image](https://user-images.githubusercontent.com/75033218/206933065-58b45661-6ec7-4d06-bd82-77bfa49583cc.png)  
-
+![image](https://user-images.githubusercontent.com/75033218/206933095-63559c12-f2d9-4448-b528-92d03a88f40a.png)
   
 

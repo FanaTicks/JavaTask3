@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.lang.String;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,6 +37,7 @@ public class PropertiesFile {
         FileInputStream fis;
         java.util.Properties property = new java.util.Properties();
         Class<T> sa;
+        boolean intNull = false;
         try {
             fis = new FileInputStream(propertiesPath.toFile());
             property.load(fis);
@@ -44,7 +46,7 @@ public class PropertiesFile {
             Field[] fs = cls1.getDeclaredFields(); // получили массив с объектами Field, соответствующие полям класса cls
             String stringProperty = "";
             Instant timeProperty = Instant.now();
-            int numberProperty = 1 ;
+            Integer  numberProperty = -1 ;
             Pattern attributePatternName = Pattern.compile("[n][a][m][e]=\"([^\"]*)\"");
             Pattern attributePatternFormat = Pattern.compile("[r][m][a][t]\\s*=\\s*\"([^\"]*)\"");
             for (int i = 0; i < fs.length; i++) {
@@ -52,24 +54,31 @@ public class PropertiesFile {
                 Matcher matcherName = attributePatternName.matcher(Arrays.toString(annotations));
                 Matcher matcherFormat = attributePatternFormat.matcher(Arrays.toString(annotations));
                 if(matcherName.find()){//нашлась анотация
-                    if (fs[i].getType().equals(stringProperty.getClass())) {
+                    if (fs[i].getType()== String.class) {//нашли стринг
                         stringProperty = property.getProperty(matcherName.group(1));
-                    } else if (fs[i].getType().equals(numberProperty)) {
-                        numberProperty = Integer.parseInt(property.getProperty(matcherName.group(1)));
-                    } else if (fs[i].getType().equals(timeProperty.getClass()) && matcherFormat.find()) {
+                    } else if (fs[i].getType() == Integer.class || fs[i].getType()== int.class) {//нашли инт
+                        if(property.getProperty(matcherName.group(1)).equals("")){
+                            intNull = true;
+                        }else {
+                            numberProperty = Integer.parseInt(property.getProperty(matcherName.group(1)));
+                        }
+                    } else if (fs[i].getType() == Instant.class && matcherFormat.find()) {//нашли дату
                         SimpleDateFormat sdf1 = new SimpleDateFormat(matcherFormat.group(1));
                         timeProperty = sdf1.parse(property.getProperty(matcherName.group(1))).toInstant();
                     }
                 }else {//по имени обьекта
-                    if (fs[i].getType().equals(stringProperty.getClass())) {
+                    if (fs[i].getType()== String.class) {
                         stringProperty = property.getProperty(fs[i].getName());
-                    } else if (fs[i].getType().equals(numberProperty)) {
+                    } else if (fs[i].getType().equals(numberProperty.getClass()) || fs[i].getType()== int.class) {
                         numberProperty = Integer.parseInt(property.getProperty(fs[i].getName()));
-                    } else if (fs[i].getType().equals(timeProperty.getClass())) {
+                    } else if (fs[i].getType() == Instant.class) {
                         SimpleDateFormat sdf1 = new SimpleDateFormat("dd.MM.yyyy HH:mm");
                         timeProperty = sdf1.parse(property.getProperty(fs[i].getName())).toInstant();
                     }
                 }
+            }
+            if(intNull || stringProperty.equals("") || timeProperty==Instant.now()){
+                throw new IllegalArgumentException("ОШИБКА: Один из параметров пуст!");
             }
 
             sa = new Class<T>();
@@ -78,9 +87,9 @@ public class PropertiesFile {
             sa.setTimeProperty(timeProperty);
 
         } catch (IOException e) {
-            throw new IllegalArgumentException("ОШИБКА: Файл свойств отсуствует!");
+            throw new IllegalArgumentException("ОШИБКА: Проблемы с файлом!");
         } catch (ParseException e) {
-            throw new IllegalArgumentException("ОШИБКА: Не тот формат даты!");
+            throw new IllegalArgumentException("ОШИБКА: Проблемы с датой!");
         }
         return (T) sa;
     }

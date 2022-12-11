@@ -35,7 +35,7 @@ public class InputOutputFile {
     private static final String FINE_AMOUNT__PROPERTY = "fine_amount";
 
     public static void readAndParse() throws FileNotFoundException {
-        ExecutorService executor = Executors.newFixedThreadPool(8);
+        ExecutorService executor = Executors.newFixedThreadPool(1);
         List<CompletableFuture<Map<String, Double>>> list = new ArrayList<CompletableFuture<Map<String, Double>>>();
         Map<String, Double> map = new HashMap<>();
 

@@ -9,14 +9,14 @@ import static org.example.task2.PropertiesFile.loadFromProperties;
 
 public class Task2Test {
     @Test
-    public void testProperties() {
+    public void testPropertiesNoFile() {
         //given
         Path testFilePath = Paths.get("");
         PropertiesFile.Class cls = new  PropertiesFile.Class<>();
         IllegalArgumentException a = Assertions.assertThrows(IllegalArgumentException.class,()-> {
             loadFromProperties(  cls, testFilePath);
         });
-        Assertions.assertEquals("ОШИБКА: Файл свойств отсуствует!",a.getMessage());
+        Assertions.assertEquals("ОШИБКА: Проблемы с файлом!",a.getMessage());
     }
     @Test
     public void testPropertiesBadDate() {
@@ -26,7 +26,17 @@ public class Task2Test {
         IllegalArgumentException a = Assertions.assertThrows(IllegalArgumentException.class,()-> {
             loadFromProperties(  cls, testFilePath);
         });
-        Assertions.assertEquals("ОШИБКА: Не тот формат даты!",a.getMessage());
+        Assertions.assertEquals("ОШИБКА: Проблемы с датой!",a.getMessage());
+    }
+    @Test
+    public void testPropertiesNullElem() {
+        //given
+        Path testFilePath = Paths.get("src/main/resources/configNullElem.properties");
+        PropertiesFile.Class cls = new  PropertiesFile.Class<>();
+        IllegalArgumentException a = Assertions.assertThrows(IllegalArgumentException.class,()-> {
+            loadFromProperties(  cls, testFilePath);
+        });
+        Assertions.assertEquals("ОШИБКА: Один из параметров пуст!",a.getMessage());
     }
 }
 
